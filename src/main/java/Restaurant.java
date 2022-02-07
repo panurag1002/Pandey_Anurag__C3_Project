@@ -33,13 +33,13 @@ public class Restaurant {
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
-    public LocalTime getOpeningTime() { return this.openingTime; }
+    public LocalTime getOpeningTime() { return openingTime; }
 
     public void setOpeningTime(LocalTime openingTime) {
         this.openingTime = openingTime;
     }
 
-    public LocalTime getClosingTime() { return this.closingTime; }
+    public LocalTime getClosingTime() { return closingTime; }
 
     public void setClosingTime(LocalTime closingTime) {
         this.closingTime = closingTime;
@@ -82,6 +82,14 @@ public class Restaurant {
 
     public String getName() {
         return name;
+    }
+
+    public int getOrderValue(List<Item> item){
+        int totalPrice = 0;
+        for (Item myItem : item) {
+            totalPrice += myItem.getPrice();
+        }
+        return totalPrice;
     }
 
 }

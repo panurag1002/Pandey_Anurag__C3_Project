@@ -44,10 +44,21 @@ class RestaurantTest {
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER VALUE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
-    public void total_order_value_should_add_when_collection_of_items_selected(){
+    public void total_price_should_add_when_collection_of_items_selected(){
         restaurantDesign();
         newItem = restaurant.getMenu();
         assertEquals(388,restaurant.getOrderValue(newItem));
+    }
+
+    @Test
+    public void total_price_reduce__when_an_item_removed(){
+        restaurantDesign();
+        newItem = restaurant.getMenu();
+        int total = restaurant.getOrderValue(newItem);
+        int afterRemove = newItem.get(0).getPrice();
+        newItem.remove(0);
+        assertEquals(total-afterRemove,restaurant.getOrderValue(newItem));
+        System.out.println(total-afterRemove);
     }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
