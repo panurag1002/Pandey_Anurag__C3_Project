@@ -1,12 +1,14 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import java.util.List;
+import java.util.ArrayList;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
+    List<Item> newItem = new ArrayList<Item>();
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
     public void restaurantDesign(){
@@ -40,6 +42,13 @@ class RestaurantTest {
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER VALUE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void total_order_value_should_add_when_collection_of_items_selected(){
+        restaurantDesign();
+        newItem = restaurant.getMenu();
+        assertEquals(388,restaurant.getOrderValue(newItem));
+    }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
